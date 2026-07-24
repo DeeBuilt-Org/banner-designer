@@ -1133,7 +1133,7 @@ function ProviderProfile({ ctx }: { ctx: TemplateContext }) {
   const { f, has, fonts, accent, ink, paper, photoZone } = ctx;
   const onDark = paper;
   const gold = lighten(accent, 0.2);
-  const cred = f("offer"); // the credential ("FNP-BC") rides in Offer
+  const cred = f("offer"); // the credential (e.g. a license or title) rides in Offer
   const padLeft = ctx.photo.side === "left" ? "4%" : "5%";
   return (
     <ZoneContent zone={photoZone} style={{ justifyContent: "center", paddingLeft: padLeft, paddingRight: "5%", gap: 14 }}>
@@ -1540,7 +1540,7 @@ export const TEMPLATES: Record<TemplateId, TemplateDef & { render: (ctx: Templat
         splitColor: lighten(c.accent, 0.35),
         splitGradientTo: c.accent,
       },
-      "ghost-text": { ghostText: c.f("brand").split(" ")[0] || "care", ghostSize: 300, ghostAlpha: 0.06, ghostX: -1, ghostY: 28, ghostFont: c.fonts.heading },
+      "ghost-text": { ghostText: c.f("brand").split(" ")[0] || "Brand", ghostSize: 300, ghostAlpha: 0.06, ghostX: -1, ghostY: 28, ghostFont: c.fonts.heading },
       grain: { grainAlpha: 0.08 },
     }),
     render: (ctx) => <CallToAction ctx={ctx} />,
@@ -1558,7 +1558,7 @@ export const TEMPLATES: Record<TemplateId, TemplateDef & { render: (ctx: Templat
     finishConfigs: (c) => ({
       "blur-blob": { blobColor: lighten(c.ink, 0.35), blobX: -4, blobY: 40, blobSize: 46, blobAlpha: 0.6 },
       "ghost-text": {
-        ghostText: c.f("offer") || "FNP-BC",
+        ghostText: c.f("offer") || "Certified",
         ghostSize: 300,
         ghostAlpha: 0.05,
         ghostX: 40,
