@@ -42,19 +42,19 @@ export interface FieldDef {
 }
 
 export const FIELDS: Record<FieldKey, FieldDef> = {
-  brand: { key: "brand", label: "Business name", placeholder: "Providence Care Plus" },
-  eyebrow: { key: "eyebrow", label: "Eyebrow", placeholder: "New patient offer · Limited time" },
-  headline: { key: "headline", label: "Headline", placeholder: "A full first visit, for ninety-nine.", long: true },
-  tagline: { key: "tagline", label: "Tagline", placeholder: "Functional medicine with a board-certified NP.", long: true },
+  brand: { key: "brand", label: "Business name", placeholder: "Your business name" },
+  eyebrow: { key: "eyebrow", label: "Eyebrow", placeholder: "Short label · Limited time" },
+  headline: { key: "headline", label: "Headline", placeholder: "Your headline goes here.", long: true },
+  tagline: { key: "tagline", label: "Tagline", placeholder: "A supporting line under the headline.", long: true },
   offer: { key: "offer", label: "Offer", placeholder: "$99" },
-  cta: { key: "cta", label: "Call to action", placeholder: "Book a free consultation" },
-  promoCode: { key: "promoCode", label: "Promo code", placeholder: "WELLNESS99" },
-  contact: { key: "contact", label: "Contact line", placeholder: "(503) 555 · 0198" },
-  website: { key: "website", label: "Website", placeholder: "providencecareplus.com" },
-  quote: { key: "quote", label: "Quote", placeholder: "The best care I've had in years.", long: true },
-  attribution: { key: "attribution", label: "Attributed to", placeholder: "Maria G. · Patient since 2021" },
-  detail: { key: "detail", label: "Detail line", placeholder: "Saturday, May 18 · 10am–2pm" },
-  location: { key: "location", label: "Location", placeholder: "Portland" },
+  cta: { key: "cta", label: "Call to action", placeholder: "Book now" },
+  promoCode: { key: "promoCode", label: "Promo code", placeholder: "SAVE20" },
+  contact: { key: "contact", label: "Contact line", placeholder: "(555) 555 · 0100" },
+  website: { key: "website", label: "Website", placeholder: "yourwebsite.com" },
+  quote: { key: "quote", label: "Quote", placeholder: "A short customer quote.", long: true },
+  attribution: { key: "attribution", label: "Attributed to", placeholder: "Name · Role" },
+  detail: { key: "detail", label: "Detail line", placeholder: "Date · Time · Place" },
+  location: { key: "location", label: "Location", placeholder: "Your city" },
 };
 
 // ── Steps (structured, for the "How it works" 2–4 step layout) ────────────────
@@ -72,10 +72,11 @@ export interface Step {
 export const MIN_STEPS = 2;
 export const MAX_STEPS = 4;
 
+// Empty by default — a fresh banner starts blank; the user fills these in.
 export const DEFAULT_STEPS: Step[] = [
-  { title: "Listen", body: "We start with your story, your symptoms, and your goals." },
-  { title: "Test", body: "Labs and markers that reveal what standard visits miss." },
-  { title: "Treat", body: "A plan tailored to you — adjusted as you go." },
+  { title: "", body: "" },
+  { title: "", body: "" },
+  { title: "", body: "" },
 ];
 
 /** The uploaded logo (data URL) — separate from text fields; not every template uses it. */
@@ -267,22 +268,23 @@ export interface BannerState {
   fontId: string;
 }
 
-// A brand-neutral default so an untouched tool still shows a real design (forest
-// + gold, matching the reference client and Ruthnie's own palette).
+// Empty by default — a fresh open and a reset both start with a completely blank
+// banner. No seeded content, no client data. The FIELDS placeholders (above) are
+// the only guidance shown; nothing here fills or exports.
 export const DEFAULT_FIELDS: Record<FieldKey, string> = {
-  brand: "Providence Care Plus",
-  eyebrow: "New patient offer · Limited time",
-  headline: "A full first visit, for ninety-nine.",
-  tagline: "Functional medicine with a board-certified nurse practitioner.",
-  offer: "$99",
-  cta: "Book a free consultation",
-  promoCode: "WELLNESS99",
-  contact: "(503) 555 · 0198",
-  website: "providencecareplus.com",
-  quote: "The best care I've had in years — I actually feel heard.",
-  attribution: "Maria G. · Patient since 2021",
-  detail: "Saturday, May 18 · 10am – 2pm",
-  location: "Portland",
+  brand: "",
+  eyebrow: "",
+  headline: "",
+  tagline: "",
+  offer: "",
+  cta: "",
+  promoCode: "",
+  contact: "",
+  website: "",
+  quote: "",
+  attribution: "",
+  detail: "",
+  location: "",
 };
 
 // A pleasant default template per platform — varied so a fresh open already
@@ -316,9 +318,9 @@ export const bannerInitial: BannerState = {
   steps: DEFAULT_STEPS.map((s) => ({ ...s })),
   logoDataUrl: null,
   photo: { ...DEFAULT_PHOTO },
-  accent: "#c8a46b", // gold
-  ink: "#1b4d3e", // forest
-  paper: "#f6f1e7", // cream
+  accent: "#3b82f6", // neutral blue — a generic starting accent, no client palette
+  ink: "#1e293b", // slate ink
+  paper: "#f8fafc", // near-white paper
   fontId: "fraunces-nunito",
 };
 
