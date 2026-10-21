@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ConfigProvider, App as AntdApp, Typography } from "antd";
-import { OpsetteHeader } from "./components/opsette-header";
-import { OpsetteFooterLogo } from "./components/opsette-share";
+import { AppHeader } from "./components/AppHeader";
+import { DeeBuiltCredit } from "./components/DeeBuiltCredit";
 import { EmbedSaveBar } from "./components/EmbedSaveBar";
 import { BannerPanel } from "./banner/BannerPanel";
 import {
@@ -86,7 +86,7 @@ function BannerDesignerInner() {
       {embedded ? (
         <EmbedSaveBar onSave={() => void saveToBrandBoard()} saving={saving} />
       ) : (
-        <OpsetteHeader />
+        <AppHeader />
       )}
 
       <main
@@ -106,7 +106,9 @@ function BannerDesignerInner() {
               Runs entirely in your browser. Nothing is uploaded.
             </Typography.Paragraph>
 
-            <OpsetteFooterLogo />
+            <footer style={{ textAlign: "center", paddingBottom: 24 }}>
+              <DeeBuiltCredit />
+            </footer>
           </>
         )}
       </main>

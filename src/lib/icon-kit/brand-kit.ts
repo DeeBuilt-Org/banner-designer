@@ -76,7 +76,8 @@ export function toSocialKitJson(assets: SocialAsset[], configs: SocialConfigs): 
 /**
  * Parse a pasted blob. Strict on the envelope (type/v/source) so a random paste
  * is rejected; never throws. Returns null for anything that isn't a valid
- * Opsette social blob.
+ * social blob. (`source: "opsette"` is the blob's format tag, shared with saved
+ * Brand Board kits; it stays as-is so existing kits keep loading.)
  */
 export function fromSocialKitJson(raw: string): SocialPayload | null {
   let parsed: unknown;
