@@ -1,0 +1,61 @@
+/**
+ * Global design tokens for Banner Designer's chrome.
+ *
+ * The DeeBuilt tools design system (opsette-tools.github.io/docs/
+ * DEEBUILT-TOOLS-MIGRATION.md): Bodoni Moda for names and titles, Lato for
+ * everything you read or click. No component names a raw font weight, font
+ * family or chrome size — if one is needed and isn't here, add it here first.
+ *
+ * These style the app only. The banners themselves (templates.tsx,
+ * finishes.tsx) are set in the user's font pairing and never read them.
+ *
+ * Banner Designer has no dark mode, so there is no dark block.
+ */
+:root {
+  /* ---- Type families ----------------------------------------------------- */
+  --ops-font-display: "Bodoni Moda", "Didot", Georgia, serif;
+  --ops-font-ui: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ops-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ---- Font weights ------------------------------------------------------ */
+  /* Lato ships 400 and 700 only, so the UI has exactly two weights. Bodoni
+     Moda is variable; every display title uses the one display weight. */
+  --ops-fw-regular: 400;
+  --ops-fw-bold: 700;
+  --ops-fw-display: 600;
+  --ops-tracking-display: -0.01em;
+  /* Small tracked capitals (the template strip's label). */
+  --ops-tracking-eyebrow: 0.06em;
+
+  /* ---- Type scale -------------------------------------------------------- */
+  --ops-fs-micro: 11px;                       /* card meta, tiny labels */
+  --ops-fs-fine: clamp(12px, 3vw, 13px);      /* fine print / helper lines */
+  --ops-fs-caption: clamp(13px, 3.4vw, 14px); /* row labels, secondary copy */
+  --ops-fs-nav: 14px;
+  --ops-fs-wordmark: clamp(22px, 5.6vw, 26px);
+
+  /* ---- Spacing ----------------------------------------------------------- */
+  --ops-space-xs: 4px;
+  --ops-space-sm: 8px;
+  --ops-space-md: 12px;
+  --ops-space-lg: 16px;
+  --ops-page-pad: clamp(16px, 4vw, 24px);
+
+  /* ---- Brand + surfaces -------------------------------------------------- */
+  --ops-green: #2f4f46;
+  --ops-surface: #ffffff;
+  --ops-border: #e6e8e6;
+  --ops-text: #1a1a1a;
+  --ops-text-muted: #5b605c;
+
+  /* ---- Chrome ------------------------------------------------------------ */
+  --ops-header-h: 56px;
+  --ops-header-tile-size: 28px;
+  --ops-header-tile-radius: 7px;
+  --ops-header-mark: 18px;
+  --ops-control-icon: 36px;
+  --ops-icon-chrome: 20px;
+  --ops-icon-nav: 18px;
+  --ops-nav-item-h: 36px;
+  --ops-nav-gap: 10px;
+}

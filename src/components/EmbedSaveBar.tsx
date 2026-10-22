@@ -30,10 +30,10 @@ export function EmbedSaveBar({
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
-        <Typography.Text style={{ color: "#fff", fontWeight: 600, fontSize: 14 }}>
+        <Typography.Text strong className="bd-text-caption" style={{ color: "#fff" }}>
           Editing your brand assets
         </Typography.Text>
-        <Typography.Text style={{ color: "rgba(255,255,255,0.72)", fontSize: 12 }}>
+        <Typography.Text className="bd-text-fine" style={{ color: "rgba(255,255,255,0.72)" }}>
           Changes stay here until you send them back to the board.
         </Typography.Text>
       </div>

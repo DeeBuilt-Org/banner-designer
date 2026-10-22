@@ -84,7 +84,7 @@ function FinishStackControl({
   const addable = FINISHES.filter((f) => applicable.includes(f.kind) && !active.includes(f.kind));
   return (
     <Space direction="vertical" size={12} style={{ width: "100%" }}>
-      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+      <Typography.Text type="secondary" className="bd-text-fine">
         Layer as many as you like — drawn back to front. The template starts with a
         designed set; add, drop, or reorder from there.
       </Typography.Text>
@@ -105,7 +105,7 @@ function FinishStackControl({
                 background: "#f7faf8",
               }}
             >
-              <span style={{ flex: 1, fontSize: 13, fontWeight: 500 }}>
+              <span className="bd-text-caption" style={{ flex: 1 }}>
                 <span style={{ color: "#8aa79b", marginRight: 8 }}>{i + 1}</span>
                 {finishLabel(kind)}
               </span>
@@ -137,7 +137,7 @@ function FinishStackControl({
 
       {/* Add finishes not yet in the stack. */}
       <div>
-        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+        <Typography.Text type="secondary" className="bd-text-fine">
           Add a finish
         </Typography.Text>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 6 }}>
@@ -149,7 +149,7 @@ function FinishStackControl({
             </Tooltip>
           ))}
           {addable.length === 0 && (
-            <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+            <Typography.Text type="secondary" className="bd-text-fine">
               All finishes for this template are added.
             </Typography.Text>
           )}
@@ -273,7 +273,7 @@ function PhotoFocusPad({
           }}
         />
       </div>
-      <Typography.Text type="secondary" style={{ fontSize: 11, display: "block", marginTop: 6, maxWidth: 200 }}>
+      <Typography.Text type="secondary" className="bd-text-micro" style={{ display: "block", marginTop: 6, maxWidth: 200 }}>
         Drag the dot onto what you want kept in frame — put it on the face, then set zoom.
       </Typography.Text>
     </div>
@@ -321,7 +321,7 @@ function PhotoControls({
         )}
       </Space>
       {!photo.dataUrl && (
-        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+        <Typography.Text type="secondary" className="bd-text-fine">
           {mode === "panel"
             ? "Upload a person or product photo — it carves into one side of the banner."
             : "Upload a photo — it fills the banner behind your text."}
@@ -414,7 +414,7 @@ function StepsEditor({
 }) {
   return (
     <Space direction="vertical" size={12} style={{ width: "100%" }}>
-      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+      <Typography.Text type="secondary" className="bd-text-fine">
         Two to four steps. Each shows a number, a short title, and one line under it.
       </Typography.Text>
       {steps.map((step, i) => (
@@ -428,7 +428,7 @@ function StepsEditor({
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#8aa79b" }}>
+            <span className="bd-text-fine bd-text-bold" style={{ color: "#8aa79b" }}>
               {String(i + 1).padStart(2, "0")}
             </span>
             <Input
@@ -750,7 +750,7 @@ export function BannerPanel() {
           flexWrap: "wrap",
         }}
       >
-        <Typography.Paragraph type="secondary" style={{ margin: 0, fontSize: 13, flex: 1, minWidth: 220 }}>
+        <Typography.Paragraph type="secondary" className="bd-text-caption" style={{ margin: 0, flex: 1, minWidth: 220 }}>
           Pick a template for what the banner is <em>for</em>, fill the fields, layer
           finishes, and tune your colors. Every size renders from one design.
         </Typography.Paragraph>
@@ -850,7 +850,7 @@ export function BannerPanel() {
                     )}
                   </Space>
                   {!state.logoDataUrl && (
-                    <Typography.Text type="secondary" style={{ fontSize: 12, display: "block", marginTop: 6 }}>
+                    <Typography.Text type="secondary" className="bd-text-fine" style={{ display: "block", marginTop: 6 }}>
                       No logo yet — a monogram from your business name stands in.
                     </Typography.Text>
                   )}
@@ -911,14 +911,14 @@ export function BannerPanel() {
                   options={PLATFORMS.map((p) => ({ label: p.label, value: p.id }))}
                 />
                 <BannerSmartPreview state={state} />
-                <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+                <Typography.Text type="secondary" className="bd-text-fine">
                   {`${platformDef.w} × ${platformDef.h} — exports at full resolution.`}
                 </Typography.Text>
 
                 {/* All-sizes overview — every platform's assigned template, at a
                     glance. The focused one is ringed; click any to switch. */}
                 <div>
-                  <Typography.Text type="secondary" style={{ fontSize: 12, fontWeight: 600, display: "block", marginBottom: 8 }}>
+                  <Typography.Text type="secondary" strong className="bd-text-fine" style={{ display: "block", marginBottom: 8 }}>
                     All sizes — tap one to edit it
                   </Typography.Text>
                   <PlatformFilmstrip state={state} onFocus={(id) => dispatch({ type: "setPlatform", id })} />
@@ -965,7 +965,7 @@ function WarmFonts({ state }: { state: BannerState }) {
 function LabeledField({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <Typography.Text style={{ fontSize: 12, fontWeight: 600, color: "#5a7268", display: "block", marginBottom: 4 }}>
+      <Typography.Text strong className="bd-text-fine" style={{ color: "#5a7268", display: "block", marginBottom: 4 }}>
         {label}
       </Typography.Text>
       {children}
@@ -986,9 +986,9 @@ function ColorRow({
 }) {
   return (
     <Space>
-      <span style={{ minWidth: 56, display: "inline-block", fontWeight: 500 }}>{label}</span>
+      <span style={{ minWidth: 56, display: "inline-block" }}>{label}</span>
       <ColorPicker value={value} onChange={(c) => onChange(c.toHexString())} />
-      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+      <Typography.Text type="secondary" className="bd-text-fine">
         {hint}
       </Typography.Text>
     </Space>
@@ -1017,7 +1017,7 @@ function ReopenModal({
       onOk={onOk}
       okButtonProps={{ disabled: !text.trim() }}
     >
-      <Typography.Paragraph type="secondary" style={{ fontSize: 13 }}>
+      <Typography.Paragraph type="secondary" className="bd-text-caption">
         Paste an <b>Export to Brand Board</b> blob (from this tool) to rebuild the
         whole design — template, content, colors, fonts and finishes. It's the same
         blob you'd paste into Brand Board.
@@ -1027,7 +1027,7 @@ function ReopenModal({
         value={text}
         onChange={(e) => onText(e.target.value)}
         placeholder='{"type":"social","v":1,"source":"opsette","data":{...}}'
-        style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: 12 }}
+        className="bd-mono bd-text-fine"
       />
     </Modal>
   );

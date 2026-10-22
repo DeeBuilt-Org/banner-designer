@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ConfigProvider, App as AntdApp, Typography } from "antd";
-import { AppHeader } from "./components/AppHeader";
+import { AppHeader, FlagMark } from "./components/AppHeader";
 import { DeeBuiltCredit } from "./components/DeeBuiltCredit";
 import { EmbedSaveBar } from "./components/EmbedSaveBar";
 import { BannerPanel } from "./banner/BannerPanel";
@@ -86,7 +86,7 @@ function BannerDesignerInner() {
       {embedded ? (
         <EmbedSaveBar onSave={() => void saveToBrandBoard()} saving={saving} />
       ) : (
-        <AppHeader />
+        <AppHeader mark={<FlagMark />} name="Banner Designer" />
       )}
 
       <main
@@ -101,7 +101,8 @@ function BannerDesignerInner() {
           <>
             <Typography.Paragraph
               type="secondary"
-              style={{ textAlign: "center", fontSize: 12, marginTop: 32 }}
+              className="bd-text-fine"
+              style={{ textAlign: "center", marginTop: 32 }}
             >
               Runs entirely in your browser. Nothing is uploaded.
             </Typography.Paragraph>
@@ -122,10 +123,18 @@ export default function App() {
       theme={{
         token: {
           colorPrimary: "#2f4f46",
-          fontFamily: '"Inter", system-ui, sans-serif',
+          // The UI face lives in tokens.css; AntD writes this straight into
+          // its CSS, so the variable resolves at render time.
+          fontFamily: "var(--ops-font-ui)",
+          // Lato ships 400 and 700 only. AntD's default strong weight is 600,
+          // which every `Text strong` and card title reads; pin it to the real bold.
+          fontWeightStrong: 700,
           borderRadius: 10,
         },
         components: {
+          Button: {
+            fontWeight: 700,
+          },
           // AntD derives the Select's selected/hover row background from
           // colorPrimary. With our dark-green primary that lands as a muddy
           // grey-green. Override with a light tint so the highlighted option

@@ -1,6 +1,7 @@
 // Banner Designer
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import "./styles/tokens.css";
 import "./styles.css";
 
 // SW registration guard: skip when embedded in an iframe (e.g. brand-board embed
